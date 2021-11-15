@@ -9,10 +9,10 @@ import Vue from 'vue'
 import '../../frontend/src/assets/css/app.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import VueRouter from 'vue-router'
-import Register from "../../frontend/src/components/Register";
-import Login from "../../frontend/src/components/Login";
-import Profile from "../../frontend/src/components/Profile";
-import CreateForm from "../../frontend/src/components/CreateForm"
+import RegisterComponent from "../../frontend/src/components/RegisterComponent";
+import LoginComponent from "../../frontend/src/components/LoginComponent";
+import ProfileComponent from "../../frontend/src/components/ProfileComponent";
+import CreateOrUpdateComponent from "../../frontend/src/components/CreateOrUpdateComponent"
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -23,22 +23,22 @@ const router = new VueRouter({
         {
             path: "/",
             name: "register",
-            component: Register,
+            component: RegisterComponent,
         },
         {
             path: "/login",
             name: "login",
-            component: Login,
+            component: LoginComponent,
         },
         {
             path: "/profile",
             name: "profile",
-            component: Profile,
+            component: ProfileComponent,
         },
         {
             path: "/create",
             name: "create-edit-form",
-            component: CreateForm,
+            component: CreateOrUpdateComponent,
         },
     ]
 });
@@ -46,5 +46,4 @@ const router = new VueRouter({
 new Vue({
     el: '#app',
     router,
-
 });

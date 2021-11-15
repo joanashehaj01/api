@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:passport')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -23,6 +23,4 @@ Route::group(['prefix' => 'books', 'as' => 'book.', 'middleware' => 'auth:api'],
     Route::get('/exist/{book}', [BookController::class, 'checkIfBookExist'])->name('exits');
     Route::get('/filter', [BookController::class, 'filterBooks'])->name('filter');
 });
-Route::resource('books', BookController::class)->except( 'edit', 'create')
-//    ->middleware('auth:api');
-;
+Route::resource('books', BookController::class)->except('edit', 'create')->middleware('auth:api');

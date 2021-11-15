@@ -119,8 +119,9 @@ class AuthController extends Controller
         if (!Auth::attempt($input)) {
             return response(['message' => __('books.message.success.unauthorized')], 401);
         }
+
         $access_token = auth()->user()->createToken($input['password'])->accessToken;
 
-        return response()->json(['code' => 0, 'access_token' => $access_token], 200);
+        return response()->json(['code' => 0, 'access_token' => $access_token,'user'=>auth()->user()], 200);
     }
 }
